@@ -43,15 +43,15 @@ $('#demo-img').imotion({
 });
 ```
 
-### Options
+## Options
 
-+ dfd ( $.Deferred( ) object ):
++ **dfd** ( $.Deferred( ) object ):
 
  Activates animation when receiving dfd.resolve().
 
  Default is **null**, so animation starts soon after all images are pre-loaded.
 
-+ fps ( Number ): 
++ **fps** ( Number ): 
 
  Controls how many frames (images) will be displayed per sec. 
  
@@ -59,13 +59,13 @@ $('#demo-img').imotion({
 
  **Caution: increasing this number may degrade animation quality.**
 
-+ wait ( Number ):
++ **wait** ( Number ):
 
  Animation starts after this number (msec).
 
  Default is **0**. 
 
-+ skipFirst ( Boolean ):
++ **skipFirst** ( Boolean ):
 
  Controls whether to include the first frame in animation.
 
