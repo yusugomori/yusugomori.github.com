@@ -3,7 +3,7 @@
  *
  * @author:  Yusuke Sugomori (http://yusugomori.com)
  * @license: http://yusugomori.com/license/mit
- * @version: 1.0.1
+ * @version: 1.0.2
  ###
 
 
@@ -24,6 +24,8 @@ do (jQuery) ->
       dfds = []
       for i in [0...options.imgs.length]
         dfds.push self.preload(options.imgs[i])
+
+      dfdFin = $.Deferred()
 
       $.when.apply(null, dfds).done =>
         if options.dfd?
@@ -50,13 +52,14 @@ do (jQuery) ->
 
           interval = 1000 / fps
           setTimeout =>
-            self.animate(@, self, interval, index, options.imgs.length)
+            self.animate(@, self, interval, index, options.imgs.length, dfdFin)
           , wait
 
       .fail () =>
-        return @
+        dfdFin.reject()
 
-      return @
+
+      return dfdFin.promise()
 
 
   jQuery.extend jQuery.fn.imotion,
@@ -74,9 +77,11 @@ do (jQuery) ->
 
       return dfd.promise()
 
-    animate: ($img, self, interval, index, len) ->
-      return if index is len
+    animate: ($img, self, interval, index, len, dfd) ->
+      if index > len
+        dfd.resolve()
+
       setTimeout ->
         $img.attr 'src', self.options.imgs[index]
-        self.animate($img, self, interval, index+1, len)
+        self.animate($img, self, interval, index+1, len, dfd)
       , interval
