@@ -3,7 +3,7 @@
  *
  * @author:  Yusuke Sugomori (http://yusugomori.com)
  * @license: http://yusugomori.com/license/mit
- * @version: 1.0.0
+ * @version: 1.0.1
  ###
 
 
@@ -11,9 +11,15 @@ do (jQuery) ->
   jQuery.fn.extend
     imotion: (options={}) ->
       self = jQuery.fn.imotion
-      self.options = options
+
+      if jQuery.isArray(options) is true
+        options =
+          imgs: options
 
       return if jQuery.isArray(options.imgs) isnt true
+
+      self.options = options
+
 
       dfds = []
       for i in [0...options.imgs.length]
