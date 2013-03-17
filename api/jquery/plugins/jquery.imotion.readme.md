@@ -45,7 +45,7 @@ $('#demo-img').imotion({
 
 // chain actions
 //   jquery.imotion.js returns $.Deferred() object ( .promise() ),
-//   so you can chain actions in .then() or .fail() etc.
+//   so you can chain actions with .then() or .fail() etc.
 $('#demo-img').imotion(imgs).then(function(){
   /* triggered after animation */
 }).fail(function(){
