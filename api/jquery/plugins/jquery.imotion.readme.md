@@ -22,7 +22,7 @@ http://yusugomori.com/s/motion
 
 ```js
 var imgs = [];  // Array for stop motion images
-for(var i=0; i<100; i++) imgs.push("/assets/"+i+".png"); // push images
+for(var i=0; i<100; i++) imgs.push("/path/to/images/"+i+".png"); // push images (example)
 
 // minimal
 $('#demo-img').imotion(imgs);
@@ -41,6 +41,17 @@ $('#demo-img').imotion({
   wait: 1000,
   skipFirst: true
 });
+
+
+// chain actions
+//   jquery.imotion.js returns $.Deferred() object ( .promise() ),
+//   so you can chain actions in .then() or .fail() etc.
+$('#demo-img').imotion(imgs).then(function(){
+  /* triggered after animation */
+}).fail(function(){
+  /* triggered when animation fails */
+});
+
 ```
 
 ## Options
