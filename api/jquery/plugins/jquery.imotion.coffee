@@ -25,9 +25,9 @@ do (jQuery) ->
       for i in [0...options.imgs.length]
         dfds.push self.preload(options.imgs[i])
 
-      dfdFin = $.Deferred()
+      dfdFin = jQuery.Deferred()
 
-      $.when.apply(null, dfds).done =>
+      jQuery.when.apply(null, dfds).done =>
         if options.dfd?
           dfd = options.dfd
         else
@@ -64,7 +64,7 @@ do (jQuery) ->
 
   jQuery.extend jQuery.fn.imotion,
     preload: (src) ->
-      dfd = $.Deferred()
+      dfd = jQuery.Deferred()
       img = document.createElement('img')
       img.src = src
 
