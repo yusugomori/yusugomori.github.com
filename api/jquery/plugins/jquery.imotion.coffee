@@ -3,7 +3,7 @@
  *
  * @author:  Yusuke Sugomori (http://yusugomori.com)
  * @license: http://yusugomori.com/license/mit
- * @version: 1.0.2
+ * @version: 1.0.3
  ###
 
 
@@ -78,7 +78,7 @@ do (jQuery) ->
       return dfd.promise()
 
     animate: ($img, self, interval, index, len, dfd) ->
-      if index > len
+      if index >= len
         dfd.resolve()
 
       setTimeout ->
